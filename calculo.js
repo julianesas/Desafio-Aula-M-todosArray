@@ -7,7 +7,7 @@ const Cart = require('./cart.json')
 
 let qtd = 0;
 let valorTotalCard=0;
-let vTotalFormatado =(value)=> Intl.NumberFormat('pt-br',{style: 'currency', currency: 'BRL'}).format(value);
+let vTotalFormatado =(value)=> (Intl.NumberFormat('pt-br',{style: 'currency', currency: 'BRL'}).format(value));
 let array = Cart.items;
 let novoArray =[];
 
@@ -15,7 +15,7 @@ let novoArray =[];
 
 function mapCart(){
     let mapCart = array.map((sapato, index)=>{
-        let multiplica = sapato.quantity*sapato.price;
+        let multiplica = sapato.quantity*(sapato.price/100);
         valorTotalCard+= multiplica;
 
         let objeto = {titulo: sapato.title, quantidade: sapato.quantity};
